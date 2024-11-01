@@ -2,8 +2,17 @@ import MarkdownIt from 'markdown-it';
 import 'github-markdown-css/github-markdown.css';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css'; // 引入代码高亮的样式
+import { useState } from 'react'
 
 function App(): JSX.Element {
+
+  const [fileContent, setFileContent] = useState('')
+
+  const handleFileSelect = async () => {
+    const content = await window.api.selectFile()
+    setFileContent(content)
+  }
+
   const md = new MarkdownIt({
     html: true,
     linkify: true,
@@ -18,56 +27,16 @@ function App(): JSX.Element {
     }
   });
 
-  // document.getElementById('preview').addEventListener('click', function(event) {
-  //   if (event.target.tagName === 'P') {
-  //     makeEditable(event.target);
-  //   }
-  // });
-  //
-  //
-  // function makeEditable(element) {
-  //   let textarea = document.createElement('textarea');
-  //   textarea.value = element.textContent;
-  //   element.parentNode.replaceChild(textarea, element);
-  //   textarea.focus();
-  //
-  //   // 当用户完成编辑时，将`textarea`转换回文本
-  //   textarea.addEventListener('blur', function() {
-  //     let newP = document.createElement('p');
-  //     newP.textContent = textarea.value;
-  //     textarea.parentNode.replaceChild(newP, textarea);
-  //   });
-  // }
-
-
-  let abc = `
-Inlinsss e
-
-\`code\`
-
-\`\`\` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-\`\`\`
-
-## Tables
-
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-  `
   return (
     <>
+      <div className="action">
+        <button onClick={handleFileSelect}>
+          Select File
+        </button>
+      </div>
       <div
-        id="preview"
         className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: md.render(abc) }} />
+        dangerouslySetInnerHTML={{ __html: md.render(fileContent) }} />
     </>
   );
 }
