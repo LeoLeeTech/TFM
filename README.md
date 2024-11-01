@@ -1,7 +1,7 @@
 # TFM
-- **T**ypora **F**or **M**ac OS
+- **T**ypora **F**or **M**acOS
 - **T**ype **F**or **m**arkdown
-- **T**ype **F**or **M**ac OS
+- **T**ype **F**or **M**acOS
 
 ## Project Setup
 
