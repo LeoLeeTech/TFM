@@ -1,7 +1,7 @@
 # TFM
-- **T**ypora **F**or **M**acOS
-- **T**ype **F**or **m**arkdown
-- **T**ype **F**or **M**acOS
+A Markdown Editor
+
+TFM = Type For Mac = Type For Markdown = Typora For Mac
 
 ## Project Setup
 
